@@ -1,6 +1,10 @@
+import configparser
 import openai
 
-openai.api_key = "" #paid
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+openai.api_key = config['OpenAI']['api_key']
 
 sentence = "please pick up that apple"
 response = openai.Completion.create(
