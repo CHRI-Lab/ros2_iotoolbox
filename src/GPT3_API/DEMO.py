@@ -1,6 +1,6 @@
 import openai
 
-openai.api_key = "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" #paid
+openai.api_key = "" #paid
 
 sentence = "please pick up that apple"
 response = openai.Completion.create(
