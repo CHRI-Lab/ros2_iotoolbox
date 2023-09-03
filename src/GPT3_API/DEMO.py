@@ -1,12 +1,13 @@
-import configparser
+import argparse
 import openai
 
-config = configparser.ConfigParser()
-config.read('config.ini')
+parser = argparse.ArgumentParser(description='Translate a sentence into action and object.')
+parser.add_argument('sentence', type=str, help='The sentence to translate.')
+args = parser.parse_args()
+sentence = args.sentence
 
-openai.api_key = config['OpenAI']['api_key']
+openai.api_key = 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
 
-sentence = "please pick up that apple"
 response = openai.Completion.create(
   model="text-davinci-003",
   prompt="Translate the sentence into action and object, for example a sentence 'move that cup' should be 'Action: move; Object: cup'. Now please translate " + sentence,
@@ -18,7 +19,9 @@ text = response['choices'][0]['text']
 action = text.split("Action: ")[1].split(";")[0].strip()
 obj = text.split("Object: ")[1].strip()
 objf = obj.replace(".", "")
+
 print(action)
 print(objf)
 cost = response['usage']['total_tokens']
 print("cost would be " + str(cost))
+
