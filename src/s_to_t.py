@@ -10,7 +10,7 @@ class VoiceToTextGrammarNode(Node):
         super().__init__('voice_to_text_grammar_node')
 
         # Publisher to send out the corrected text
-        self.publisher_ = self.create_publisher(String, 'corrected_text', 10)
+        self.publisher_ = self.create_publisher(String, 'input_sentence', 10)
 
         # Subscription to listen for audio file paths
         self.subscription = self.create_subscription(
