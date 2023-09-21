@@ -15,7 +15,7 @@ class Recorder:
 
         self.samplerate = 44100  # Hertz
         self.channels = 2
-        self.filename = "output.wav"
+        self.filename = "/home/nsc/ros2_workspace/src/voice/test1.wav"  # change the output address
         self.recording_chunks = []
 
     def toggle_recording(self):
