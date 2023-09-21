@@ -25,14 +25,13 @@ ___
 
 ros2 run my_pac app
 ___
-### terminal 1 for text analysis
-
-ros2 run my_pac demo_node
-___
-### terminal 2 for speech to text
-
+### terminal 1 for speech to text
 
 ros2 run my_pac s_to_t
+___
+### terminal 2 for text analysis
+
+ros2 run my_pac demo_node
 ___
 ### open another terminal to wait for result
 
