@@ -1,28 +1,24 @@
 ### open three terminal and input the follow command
-___
 
 cd ros2_workspace
 
 colcon build
 
 source install/setup.bash
-
-### terminal0 record and publish the path of .wav to /audio_filepath
 ___
+### terminal0 record and publish the path of .wav to /audio_filepath
 
 ros2 run my_pac app
-
-### terminal 1 for text analysis
 ___
+### terminal 1 for text analysis
 
 ros2 run my_pac demo_node
-
-### terminal 2 for speech to text
 ___
+### terminal 2 for speech to text
+
 
 ros2 run my_pac s_to_t
-
-### open another terminal to wait for result
 ___
+### open another terminal to wait for result
 
 ros2 topic echo /translated_sentence
