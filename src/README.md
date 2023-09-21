@@ -1,12 +1,16 @@
-# open two terminal and input the follow command
+# open three terminal and input the follow command
+
 cd ros2_workspace
 
 colcon build
 
 source install/setup.bash
 
+# terminal0 record and publish the path of .wav to /audio_filepath
 
-# terminal 1 for text analysis
+ros2 run my_pac app
+
+#terminal 1 for text analysis
 
 ros2 run my_pac demo_node
 
@@ -17,7 +21,3 @@ ros2 run my_pac s_to_t
 # open another terminal to wait for result
 
 ros2 topic echo /translated_sentence
-
-# publish the path of .wav
-
-ros2 topic pub --once /audio_filepath std_msgs/msg/String "data: '/home/nsc/ros2_workspace/src/voice/test1.wav'"
