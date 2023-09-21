@@ -1,22 +1,24 @@
-import tkinter as tk
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
 import sounddevice as sd
 import numpy as np
 import wavio
 import threading
 
-class Recorder:
-    def __init__(self, master):
-        self.master = master
-        self.master.title("Recorder")
+class RecorderNode(Node):
+    def __init__(self):
+        super().__init__('recorder_node')
 
         self.is_recording = False
-        self.start_btn = tk.Button(self.master, text="Start Recording", command=self.toggle_recording)
-        self.start_btn.pack(pady=20)
+        self.publisher_ = self.create_publisher(String, 'audio_filepath', 10)
 
         self.samplerate = 44100  # Hertz
         self.channels = 2
-        self.filename = "/home/nsc/ros2_workspace/src/voice/test1.wav"  # change the output address
+        self.filename = "/home/nsc/ros2_workspace/src/voice/test1.wav"
         self.recording_chunks = []
+
+        self.start_recording_thread = threading.Thread(target=self.record)
 
     def toggle_recording(self):
         if self.is_recording:
@@ -26,7 +28,7 @@ class Recorder:
         else:
             self.is_recording = True
             self.start_btn.config(text="Stop Recording")
-            threading.Thread(target=self.record).start()
+            self.start_recording_thread.start()
 
     def record(self):
         with sd.InputStream(samplerate=self.samplerate, channels=self.channels) as stream:
@@ -41,9 +43,17 @@ class Recorder:
             wavio.write(self.filename, full_recording, self.samplerate, sampwidth=2)
             self.recording_chunks = []
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    recorder = Recorder(root)
-    root.mainloop()
+            audio_filepath_msg = String()
+            audio_filepath_msg.data = self.filename
+            self.publisher_.publish(audio_filepath_msg)
+
+def main(args=None):
+    rclpy.init(args=args)
+    recorder_node = RecorderNode()
+    rclpy.spin(recorder_node)
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
 
 
