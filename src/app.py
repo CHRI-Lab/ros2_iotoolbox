@@ -5,6 +5,7 @@ import sounddevice as sd
 import numpy as np
 import wavio
 import threading
+from tkinter import Tk, Button
 
 class RecorderNode(Node):
     def __init__(self):
@@ -12,13 +13,20 @@ class RecorderNode(Node):
 
         self.is_recording = False
         self.publisher_ = self.create_publisher(String, 'audio_filepath', 10)
-        
+
         self.samplerate = 44100  # Hertz
         self.channels = 2
         self.filename = "/home/nsc/ros2_workspace/src/voice/test1.wav"
         self.recording_chunks = []
 
         self.start_recording_thread = threading.Thread(target=self.record)
+
+        self.master = Tk()
+        self.master.title("Recorder")
+        self.master.geometry("800x600")
+
+        self.start_btn = Button(self.master, text="Start Recording", command=self.toggle_recording)
+        self.start_btn.pack(pady=20)
 
     def toggle_recording(self):
         if self.is_recording:
@@ -47,13 +55,17 @@ class RecorderNode(Node):
             audio_filepath_msg.data = self.filename
             self.publisher_.publish(audio_filepath_msg)
 
+        self.start_btn.config(state="normal")
+
 def main(args=None):
     rclpy.init(args=args)
     recorder_node = RecorderNode()
-    rclpy.spin(recorder_node)
+    rclpy.spin_once(recorder_node)  # Add this to handle ROS2 callbacks
+    recorder_node.master.mainloop()  # Start the GUI loop
     rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
+
 
 
