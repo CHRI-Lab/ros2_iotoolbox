@@ -12,10 +12,6 @@ class RecorderNode(Node):
 
         self.is_recording = False
         self.publisher_ = self.create_publisher(String, 'audio_filepath', 10)
-
-        self.master = master
-        self.master.title("Recorder")
-        self.master.geometry("800x600")
         
         self.samplerate = 44100  # Hertz
         self.channels = 2
