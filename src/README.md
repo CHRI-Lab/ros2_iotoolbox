@@ -6,7 +6,7 @@ colcon build
 
 source install/setup.bash
 ___
-### terminal0 record and publish the path of .wav to /audio_filepath
+### terminal 0 record and publish the path of .wav to /audio_filepath
 
 ros2 run my_pac app
 ___
