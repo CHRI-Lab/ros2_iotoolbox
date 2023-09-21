@@ -10,7 +10,7 @@ source install/setup.bash
 
 ros2 run my_pac app
 
-#terminal 1 for text analysis
+# terminal 1 for text analysis
 
 ros2 run my_pac demo_node
 
