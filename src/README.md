@@ -1,5 +1,7 @@
-### open three terminal and input the follow command
+#
 
+### open three terminal and input the follow command
+***
 cd ros2_workspace
 
 colcon build
