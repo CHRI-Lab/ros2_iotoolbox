@@ -2,31 +2,22 @@
 ## About project
 The aim of this project is to develop a ROS2-based platform to enable the integration of voice commands and information recognized by the robot's vision and to operate the robot.   
 The project members are listed below:  
-
-## Contributors
-
-| Name        | Student ID | Role              | Contact                         |
-|-------------|------------|-------------------|---------------------------------|
-| Renwei Hu   | 1067974    | Product Owner     | renweih@student.unimelb.edu.au  |
-| Sicheng Nie | 1206202    | Scrum Master      | sichengn@student.unimelb.edu.au |
-| George Wang | 1084224    | Architecture Lead | wagw@student.unimelb.edu.au     |
-| Siyi Liu    |            | Deployment Lead   | siyil6@student.unimelb.edu.au   |
-
+**'Product Owner'**: Renwei Hu  
+**'Scrum Master'**: Sicheng Nie  
+**'Architecture Lead'**: George Wang  
+**'Deployment Lead'**: Siyi Liu  
 ## Working Process
-The project is divided into four modules based on prioritization:  
-- Computer Vision
-- Voice Command Recognition
-- Decision Making
-- Robotic Control
+The project is divided into four parts based on prioritization:  
+- vision tracking  
+- speech  
+- decision making  
+- robot control  
 We will develop them in order.  
-
 ### Naming rules
-Sprint tag: `COMP90082_2023_SM2_AI_RedBack_BL_SPRINTX`
-Branch Naming Convention: `<user_story_id>-<"feature/bug_fix">-<person>-<description>`
-
-## Progress Demos
-All demos reflecting our project progress have been uploaded to a [YouTube Playlist](https://www.youtube.com/playlist?list=PL1DAddnTedRfXLiYhuk05oO45_SJ-DaV0). Demo video for each independent module can also be accessed via direct links below:
-- [Object Detection](https://youtu.be/aJUBKjuEKGA)
-- [Human Gesture](https://youtu.be/93jVHLQO9h8)
-- [Speech to Text](https://youtu.be/3NdqpdoMN8E)
-
+Sprint tag: COMP90082_2023_SM2_AI_RedBack_BL_SPRINTX  
+Personal branch: Name_Content
+## Sprint1
+Create GitHub project.  
+Update README.md.
+## Sprint2
+Finish speech to text part, create demo
