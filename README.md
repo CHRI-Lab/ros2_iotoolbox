@@ -10,7 +10,7 @@ The project members are listed below:
 | Renwei Hu   | 1067974    | Product Owner     | renweih@student.unimelb.edu.au  |
 | Sicheng Nie | 1206202    | Scrum Master      | sichengn@student.unimelb.edu.au |
 | George Wang | 1084224    | Architecture Lead | wagw@student.unimelb.edu.au     |
-| Siyi Liu    |            | Deployment Lead   | siyil6@student.unimelb.edu.au   |
+| Siyi Liu    | 710301     | Deployment Lead   | siyil6@student.unimelb.edu.au   |
 
 ## Working Process
 The project is divided into four modules based on prioritization:  
