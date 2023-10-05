@@ -1,0 +1,235 @@
+# PIPELINE DEFINITION
+# Name: transcript-extraction
+# Inputs:
+#    gcs_wav_filepaths: list
+#    project_id: str
+components:
+  comp-for-loop-1:
+    dag:
+      tasks:
+        importer:
+          cachingOptions:
+            enableCache: true
+          componentRef:
+            name: comp-importer
+          inputs:
+            parameters:
+              uri:
+                componentInputParameter: pipelinechannel--gcs_wav_filepaths-loop-item
+          taskInfo:
+            name: importer
+        transcribe-with-chirp:
+          cachingOptions:
+            enableCache: true
+          componentRef:
+            name: comp-transcribe-with-chirp
+          dependentTasks:
+          - importer
+          inputs:
+            artifacts:
+              audio:
+                taskOutputArtifact:
+                  outputArtifactKey: artifact
+                  producerTask: importer
+            parameters:
+              project_id:
+                componentInputParameter: pipelinechannel--project_id
+          taskInfo:
+            name: transcribe-with-chirp
+        transcribe-with-whisper:
+          cachingOptions:
+            enableCache: true
+          componentRef:
+            name: comp-transcribe-with-whisper
+          dependentTasks:
+          - importer
+          inputs:
+            artifacts:
+              audio:
+                taskOutputArtifact:
+                  outputArtifactKey: artifact
+                  producerTask: importer
+            parameters:
+              openai_key:
+                runtimeValue:
+                  constant: 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
+          taskInfo:
+            name: transcribe-with-whisper
+    inputDefinitions:
+      parameters:
+        pipelinechannel--gcs_wav_filepaths:
+          parameterType: LIST
+        pipelinechannel--gcs_wav_filepaths-loop-item:
+          parameterType: STRING
+        pipelinechannel--project_id:
+          parameterType: STRING
+  comp-importer:
+    executorLabel: exec-importer
+    inputDefinitions:
+      parameters:
+        uri:
+          parameterType: STRING
+    outputDefinitions:
+      artifacts:
+        artifact:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+  comp-transcribe-with-chirp:
+    executorLabel: exec-transcribe-with-chirp
+    inputDefinitions:
+      artifacts:
+        audio:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+      parameters:
+        project_id:
+          parameterType: STRING
+    outputDefinitions:
+      artifacts:
+        text:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+  comp-transcribe-with-whisper:
+    executorLabel: exec-transcribe-with-whisper
+    inputDefinitions:
+      artifacts:
+        audio:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+      parameters:
+        openai_key:
+          parameterType: STRING
+    outputDefinitions:
+      artifacts:
+        text:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+deploymentSpec:
+  executors:
+    exec-importer:
+      importer:
+        artifactUri:
+          runtimeParameter: uri
+        typeSchema:
+          schemaTitle: system.Dataset
+          schemaVersion: 0.0.1
+    exec-transcribe-with-chirp:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - transcribe_with_chirp
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.3.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"'  &&\
+          \  python3 -m pip install --quiet --no-warn-script-location 'google-cloud-speech'\
+          \ 'appengine-python-standard' && \"$0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef transcribe_with_chirp(audio: Input[Dataset], project_id: str,\
+          \ text: Output[Dataset]):\n    from google.cloud.speech_v2 import SpeechClient\n\
+          \    from google.cloud.speech_v2.types import cloud_speech\n\n    from google.api_core.client_options\
+          \ import ClientOptions\n    from google.api_core.exceptions import AlreadyExists\n\
+          \n    # Instantiates a client\n    options = ClientOptions(api_endpoint=\"\
+          us-central1-speech.googleapis.com:443\")\n    client = SpeechClient(client_options=options)\n\
+          \n    request = cloud_speech.CreateRecognizerRequest(\n        parent=f\"\
+          projects/{project_id}/locations/us-central1\",\n        recognizer_id=\"\
+          chirp-experiment-004\",\n        recognizer=cloud_speech.Recognizer(\n \
+          \           language_codes=[\"en-US\"],\n            model=\"chirp\",\n\
+          \            default_recognition_config=cloud_speech.RecognitionConfig(\n\
+          \                features=cloud_speech.RecognitionFeatures(\n          \
+          \          enable_automatic_punctuation=True,\n                ),\n    \
+          \        )\n        ),\n    )\n\n    # Creates a Recognizer\n    try:\n\
+          \        operation = client.create_recognizer(request=request)\n       \
+          \ recognizer = operation.result()\n    except AlreadyExists:\n        recognizer\
+          \ = client.get_recognizer(\n            name=f\"projects/{project_id}/locations/us-central1/recognizers/chirp-experiment-004\"\
+          \n        )\n\n    # Reads a file as bytes\n    with open(audio.uri.replace(\"\
+          gs://\", \"/gcs/\"), \"rb\") as f:\n        content = f.read()\n\n    config\
+          \ = cloud_speech.RecognitionConfig(auto_decoding_config={})\n\n    print(recognizer.name)\n\
+          \    request = cloud_speech.RecognizeRequest(\n        recognizer=recognizer.name,\n\
+          \        config=config,\n        content=content,\n    )\n\n    # Transcribes\
+          \ the audio into text\n    response = client.recognize(request=request)\n\
+          \n    with open(text.path, 'w') as file:\n        for result in response.results:\n\
+          \            file.write(result.alternatives[0].transcript + \"\\n\")\n\n"
+        image: python:3.11
+    exec-transcribe-with-whisper:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - transcribe_with_whisper
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.3.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"'  &&\
+          \  python3 -m pip install --quiet --no-warn-script-location 'openai' 'appengine-python-standard'\
+          \ && \"$0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef transcribe_with_whisper(audio: Input[Dataset], text: Output[Dataset],\
+          \ openai_key: str):\n    import openai\n\n    openai.api_key = openai_key\n\
+          \n    audio_file= open(audio.uri.replace(\"gs://\", \"/gcs/\"), \"rb\")\n\
+          \    transcript = openai.Audio.transcribe(\"whisper-1\", audio_file)\n\n\
+          \    with open(text.path, 'w') as file:\n        file.write(transcript.text)\n\
+          \n"
+        image: python:3.11
+pipelineInfo:
+  name: transcript-extraction
+root:
+  dag:
+    tasks:
+      for-loop-1:
+        componentRef:
+          name: comp-for-loop-1
+        inputs:
+          parameters:
+            pipelinechannel--gcs_wav_filepaths:
+              componentInputParameter: gcs_wav_filepaths
+            pipelinechannel--project_id:
+              componentInputParameter: project_id
+        parameterIterator:
+          itemInput: pipelinechannel--gcs_wav_filepaths-loop-item
+          items:
+            inputParameter: pipelinechannel--gcs_wav_filepaths
+        taskInfo:
+          name: transcriptions
+  inputDefinitions:
+    parameters:
+      gcs_wav_filepaths:
+        parameterType: LIST
+      project_id:
+        parameterType: STRING
+schemaVersion: 2.1.0
+sdkVersion: kfp-2.3.0
