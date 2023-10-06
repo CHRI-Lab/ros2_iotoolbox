@@ -47,16 +47,21 @@ class RecorderNode(Node):
             self.start_btn.config(text="Stop Recording")
             threading.Thread(target=self.record).start()
             
-    # Modified handlers for space key
     def handle_space_press(self, event):
-        if not self.space_pressed:  # Check if space key is not already pressed
+        if not self.space_pressed:  # Only start recording on the first press
             self.space_pressed = True
-            self.toggle_recording()
+            self.start_recording()
+            if self.delay_stop_id:  # If there's a delayed stop pending, cancel it
+                self.master.after_cancel(self.delay_stop_id)
+                self.delay_stop_id = None
 
     def handle_space_release(self, event):
-        if self.space_pressed:  # Check if space key was pressed
-            self.space_pressed = False
-            self.toggle_recording()
+        # Delay the stop recording by 100ms to check for subsequent presses
+        self.delay_stop_id = self.master.after(100, self.delayed_stop_recording)
+
+    def delayed_stop_recording(self):
+        if not self.space_pressed:  # If space is still not pressed after the delay, stop recording
+            self.stop_recording()
 
     def record(self):
         with sd.InputStream(samplerate=self.samplerate, channels=self.channels) as stream:
