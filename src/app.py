@@ -18,8 +18,7 @@ class RecorderNode(Node):
 
         self.start_btn = tk.Button(self.master, text="Start Recording", command=self.toggle_recording, height=3, width=20)
         self.start_btn.pack(pady=20)
-        self.master.bind('<KeyPress-space>', lambda event: self.toggle_recording())
-        self.master.bind('<KeyRelease-space>', lambda event: self.toggle_recording())
+        self.master.bind('<KeyPress-space>', self.handle_space_press)
 
         # Recording setup
         self.is_recording = False
@@ -31,39 +30,14 @@ class RecorderNode(Node):
         # ROS2 Publisher setup
         self.publisher_ = self.create_publisher(String, 'audio_filepath', 10)
 
-        # New attribute for tracking space key state
-        self.space_pressed = False
-
-        # Modify the key bindings in the RecorderNode's __init__ method:
-        self.master.bind('<KeyPress-space>', self.handle_space_press)
-        self.master.bind('<KeyRelease-space>', self.handle_space_release)
-
-        self.delay_stop_id = None
+    def handle_space_press(self, event):
+        self.toggle_recording()
 
     def toggle_recording(self):
         if self.is_recording:
-            self.is_recording = False
-            self.start_btn.config(text="Start Recording")
-        else:
-            self.is_recording = True
-            self.start_btn.config(text="Stop Recording")
-            threading.Thread(target=self.record).start()
-            
-    def handle_space_press(self, event):
-        if not self.space_pressed:  # Only start recording on the first press
-            self.space_pressed = True
-            self.start_recording()
-            if self.delay_stop_id:  # If there's a delayed stop pending, cancel it
-                self.master.after_cancel(self.delay_stop_id)
-                self.delay_stop_id = None
-
-    def handle_space_release(self, event):
-        # Delay the stop recording by 100ms to check for subsequent presses
-        self.delay_stop_id = self.master.after(100, self.delayed_stop_recording)
-
-    def delayed_stop_recording(self):
-        if not self.space_pressed:  # If space is still not pressed after the delay, stop recording
             self.stop_recording()
+        else:
+            self.start_recording()
 
     def start_recording(self):
         if not self.is_recording:
@@ -76,7 +50,6 @@ class RecorderNode(Node):
             self.is_recording = False
             self.start_btn.config(text="Start Recording")
 
-    
     def record(self):
         with sd.InputStream(samplerate=self.samplerate, channels=self.channels) as stream:
             while self.is_recording:
