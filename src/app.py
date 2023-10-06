@@ -31,6 +31,13 @@ class RecorderNode(Node):
         # ROS2 Publisher setup
         self.publisher_ = self.create_publisher(String, 'audio_filepath', 10)
 
+        # New attribute for tracking space key state
+        self.space_pressed = False
+
+        # Modify the key bindings in the RecorderNode's __init__ method:
+        self.master.bind('<KeyPress-space>', self.handle_space_press)
+        self.master.bind('<KeyRelease-space>', self.handle_space_release)
+
     def toggle_recording(self):
         if self.is_recording:
             self.is_recording = False
@@ -39,6 +46,17 @@ class RecorderNode(Node):
             self.is_recording = True
             self.start_btn.config(text="Stop Recording")
             threading.Thread(target=self.record).start()
+            
+    # Modified handlers for space key
+    def handle_space_press(self, event):
+        if not self.space_pressed:  # Check if space key is not already pressed
+            self.space_pressed = True
+            self.toggle_recording()
+
+    def handle_space_release(self, event):
+        if self.space_pressed:  # Check if space key was pressed
+            self.space_pressed = False
+            self.toggle_recording()
 
     def record(self):
         with sd.InputStream(samplerate=self.samplerate, channels=self.channels) as stream:
