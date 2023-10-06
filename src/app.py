@@ -18,8 +18,8 @@ class RecorderNode(Node):
 
         self.start_btn = tk.Button(self.master, text="Start Recording", command=self.toggle_recording, height=3, width=20)
         self.start_btn.pack(pady=20)
-        self.master.bind('<KeyPress-space>', self.start_recording)
-        self.master.bind('<KeyRelease-space>', self.stop_recording)
+        self.master.bind('<KeyPress-space>', lambda event: self.toggle_recording())
+        self.master.bind('<KeyRelease-space>', lambda event: self.toggle_recording())
 
         # Recording setup
         self.is_recording = False
@@ -33,20 +33,12 @@ class RecorderNode(Node):
 
     def toggle_recording(self):
         if self.is_recording:
-            self.stop_recording(None)
+            self.is_recording = False
+            self.start_btn.config(text="Start Recording")
         else:
-            self.start_recording(None)
-
-    def start_recording(self, event):
-        if not self.is_recording:
             self.is_recording = True
             self.start_btn.config(text="Stop Recording")
             threading.Thread(target=self.record).start()
-
-    def stop_recording(self, event):
-        if self.is_recording:
-            self.is_recording = False
-            self.start_btn.config(text="Start Recording")
 
     def record(self):
         with sd.InputStream(samplerate=self.samplerate, channels=self.channels) as stream:
