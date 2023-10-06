@@ -15,7 +15,7 @@ class TranslateNode(Node):
         sentence = msg.data
         response = openai.Completion.create(
             model="text-davinci-003",
-            prompt=f"Translate the sentence into action, object and location, for example a sentence 'slowly move that red cup to the top of the table' should be 'Action: slowly move; Object: red cup; Location: top of the table'. Now please translate {sentence}",
+            prompt=f"Translate the sentence into action, object and location, for example a sentence 'slowly move that red cup to the top of the table' should be 'Action: slowly move; Object: red cup; Location: top of the table'. If there is no location information, Location should be N/A. Now please translate {sentence}",
             max_tokens=100
         )
 
