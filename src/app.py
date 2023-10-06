@@ -15,8 +15,11 @@ class RecorderNode(Node):
         self.master = tk.Tk()
         self.master.title("Recorder")
         self.master.geometry("400x200")  # Adjust the size as needed
-        self.master.bind('<space>', self.start_recording)  # Bind space key press
-        self.master.bind('<KeyRelease-space>', self.stop_recording)  # Bind space key release
+
+        self.start_btn = tk.Button(self.master, text="Start Recording", command=self.toggle_recording, height=3, width=20)
+        self.start_btn.pack(pady=20)
+        self.master.bind('<KeyPress-space>', self.start_recording)
+        self.master.bind('<KeyRelease-space>', self.stop_recording)
 
         # Recording setup
         self.is_recording = False
@@ -28,14 +31,22 @@ class RecorderNode(Node):
         # ROS2 Publisher setup
         self.publisher_ = self.create_publisher(String, 'audio_filepath', 10)
 
+    def toggle_recording(self):
+        if self.is_recording:
+            self.stop_recording(None)
+        else:
+            self.start_recording(None)
+
     def start_recording(self, event):
         if not self.is_recording:
             self.is_recording = True
+            self.start_btn.config(text="Stop Recording")
             threading.Thread(target=self.record).start()
 
     def stop_recording(self, event):
         if self.is_recording:
             self.is_recording = False
+            self.start_btn.config(text="Start Recording")
 
     def record(self):
         with sd.InputStream(samplerate=self.samplerate, channels=self.channels) as stream:
@@ -67,6 +78,7 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+
 
 
 
