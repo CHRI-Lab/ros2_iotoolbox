@@ -38,6 +38,8 @@ class RecorderNode(Node):
         self.master.bind('<KeyPress-space>', self.handle_space_press)
         self.master.bind('<KeyRelease-space>', self.handle_space_release)
 
+        self.delay_stop_id = None
+
     def toggle_recording(self):
         if self.is_recording:
             self.is_recording = False
