@@ -63,6 +63,18 @@ class RecorderNode(Node):
         if not self.space_pressed:  # If space is still not pressed after the delay, stop recording
             self.stop_recording()
 
+    def start_recording(self):
+        if not self.is_recording:
+            self.is_recording = True
+            self.start_btn.config(text="Stop Recording")
+            threading.Thread(target=self.record).start()
+
+    def stop_recording(self):
+        if self.is_recording:
+            self.is_recording = False
+            self.start_btn.config(text="Start Recording")
+
+    
     def record(self):
         with sd.InputStream(samplerate=self.samplerate, channels=self.channels) as stream:
             while self.is_recording:
