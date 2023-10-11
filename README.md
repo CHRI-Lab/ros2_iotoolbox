@@ -37,8 +37,8 @@ All demos reflecting our project progress have been uploaded to a [YouTube Playl
 
 ### Libfranka Installation Guide
 - Official documentation can be found here: https://frankaemika.github.io/docs/installation_linux.html
-- Confluence guide document: This [link](https://confluence.cis.unimelb.edu.au:8443/display/COMP900822023SM2AIRedBack/Libfranka+Installation+Guide) will guide you to install the ROS2.
+- Confluence guide document: This [link](https://confluence.cis.unimelb.edu.au:8443/display/COMP900822023SM2AIRedBack/Libfranka+Installation+Guide) will guide you to install the Libfranka.
 
 ### Franka_ros2 Installation Guide
 - Official documentation can be found here: https://support.franka.de/docs/franka_ros2.html
-- Confluence guide document: This [link](https://confluence.cis.unimelb.edu.au:8443/display/COMP900822023SM2AIRedBack/Franka_ros2+Installation+Guide) will guide you to install the ROS2.
+- Confluence guide document: This [link](https://confluence.cis.unimelb.edu.au:8443/display/COMP900822023SM2AIRedBack/Franka_ros2+Installation+Guide) will guide you to install the Franka_ros2.
