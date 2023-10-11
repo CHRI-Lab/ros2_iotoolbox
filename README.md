@@ -30,3 +30,7 @@ All demos reflecting our project progress have been uploaded to a [YouTube Playl
 - [Human Gesture](https://youtu.be/93jVHLQO9h8)
 - [Speech to Text](https://youtu.be/3NdqpdoMN8E)
 
+## Environment Set Up
+### ROS2(Humble) Installation Guide
+- Official documentation can be found here: https://docs.ros.org/en/humble/Installation.html
+This [link](https://confluence.cis.unimelb.edu.au:8443/display/COMP900822023SM2AIRedBack/ROS+2+%28Humble%29+Installation+Guide) will guide you to install the ROS2.
