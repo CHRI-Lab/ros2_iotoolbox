@@ -71,3 +71,6 @@ All demos reflecting our project progress have been uploaded to a [YouTube Playl
 "Please correct the grammar of the following text: \"{transcript}\""
 ### Text Analysis
 "Translate the sentence into action, object and location, for example a sentence 'slowly move that red cup to the top of the table' should be 'Action: slowly move; Object: red cup; Location: top of the table'. If there is no location information, Location should be N/A. Now please translate {sentence}"
+
+## File List
+This [file](https://github.com/COMP90082-2023-SM2/AI-RedBack/blob/VR1.8-auto_script-easten/docs/sprint3/file.txt) contains all the file list.
