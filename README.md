@@ -65,3 +65,9 @@ All demos reflecting our project progress have been uploaded to a [YouTube Playl
 
 - Version Aug 16, 2023
   - Create Github repo
+
+## Openai Prompt
+### Grammar correct
+"Please correct the grammar of the following text: \"{transcript}\""
+### Text Analysis
+"Translate the sentence into action, object and location, for example a sentence 'slowly move that red cup to the top of the table' should be 'Action: slowly move; Object: red cup; Location: top of the table'. If there is no location information, Location should be N/A. Now please translate {sentence}"
