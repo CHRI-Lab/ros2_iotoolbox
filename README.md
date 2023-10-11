@@ -33,5 +33,12 @@ All demos reflecting our project progress have been uploaded to a [YouTube Playl
 ## Environment Set Up
 ### ROS2(Humble) Installation Guide
 - Official documentation can be found here: https://docs.ros.org/en/humble/Installation.html  
-- Confluence guide document:  
-This [link](https://confluence.cis.unimelb.edu.au:8443/display/COMP900822023SM2AIRedBack/ROS+2+%28Humble%29+Installation+Guide) will guide you to install the ROS2.
+- Confluence guide document: This [link](https://confluence.cis.unimelb.edu.au:8443/display/COMP900822023SM2AIRedBack/ROS+2+%28Humble%29+Installation+Guide) will guide you to install the ROS2.
+
+### Libfranka Installation Guide
+- Official documentation can be found here: https://frankaemika.github.io/docs/installation_linux.html
+- Confluence guide document: This [link](https://confluence.cis.unimelb.edu.au:8443/display/COMP900822023SM2AIRedBack/Libfranka+Installation+Guide) will guide you to install the ROS2.
+
+### Franka_ros2 Installation Guide
+- Official documentation can be found here: https://support.franka.de/docs/franka_ros2.html
+- Confluence guide document: This [link](https://confluence.cis.unimelb.edu.au:8443/display/COMP900822023SM2AIRedBack/Franka_ros2+Installation+Guide) will guide you to install the ROS2.
