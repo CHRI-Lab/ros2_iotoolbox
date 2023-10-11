@@ -30,6 +30,9 @@ All demos reflecting our project progress have been uploaded to a [YouTube Playl
 - [Human Gesture](https://youtu.be/93jVHLQO9h8)
 - [Speech to Text](https://youtu.be/3NdqpdoMN8E)
 
+## Repo
+The project is mainly divided into two repos: [AI RedBack](https://github.com/COMP90082-2023-SM2/AI-RedBack) and [AI RedBack Vision](https://github.com/COMP90082-2023-SM2/AI-RedBack-Vision). (Customer requirement) AI RedBack has all the sprint documents and Voice Recognition content, while AI RedBack Vision mainly focuses on Vision.
+
 ## Environment Set Up
 ### ROS2(Humble) Installation Guide
 - Official documentation can be found here: https://docs.ros.org/en/humble/Installation.html  
