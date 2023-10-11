@@ -42,3 +42,26 @@ All demos reflecting our project progress have been uploaded to a [YouTube Playl
 ### Franka_ros2 Installation Guide
 - Official documentation can be found here: https://support.franka.de/docs/franka_ros2.html
 - Confluence guide document: This [link](https://confluence.cis.unimelb.edu.au:8443/display/COMP900822023SM2AIRedBack/Franka_ros2+Installation+Guide) will guide you to install the Franka_ros2.
+
+## Changelog
+### Voice Recognition
+- Version Oct 6, 2023
+  - Updated semantic analysis ROS2 node to capture more information. Updated the recording app to enable it to start and end recording using space operations
+
+- Version Sep 21, 2023
+  - Upload the ROS2 node version of the application used for recording voice and update the document
+
+- Version Sep 18, 2023
+  - Upload ROS2 Python node files for voice to text conversion and their test. wav files
+
+- Version Sep 6, 2023
+  - Upload ROS2 python node
+
+- Version Sep 3, 2023
+  - Upload Python files for semantic analysis using OpenAI
+
+- Version Aug 18, 2023
+  - Upload documents related to sprint 1
+
+- Version Aug 16, 2023
+  - Create Github repo
