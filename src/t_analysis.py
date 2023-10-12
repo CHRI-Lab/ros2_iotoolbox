@@ -15,24 +15,20 @@ class TranslateNode(Node):
         sentence = msg.data
         response = openai.Completion.create(
             model="text-davinci-003",
-            prompt=f"Translate the sentence into action, object and location, for example a sentence 'slowly move that red cup to the top of the table' should be 'Action: slowly move; Object: red cup; Location: top of the table'. If there is no location information, Location should be N/A. Now please translate {sentence}",
+            prompt=f"Translate the sentence into action, object and location, for example a sentence 'slowly move that red cup to the top of the table' should be 'Action: slowly move; Object: red cup; Location: top of the table'. If there is no location information, Location should be "Location:N/A". Now please translate {sentence}",
             max_tokens=100
         )
 
-        text = response['choices'][0]['text']
-        action = text.split("Action: ")[1].split(";")[0].strip()
-        obj = text.split("Object: ")[1].split(";")[0].strip()
-        location = text.split("Location: ")[1].strip().replace(".", "")
 
-        self.get_logger().info(f"Action: {action}")
-        self.get_logger().info(f"Object: {obj}")
-        self.get_logger().info(f"Location: {location}")
-        cost = response['usage']['total_tokens']
-        self.get_logger().info(f"Cost would be {cost}")
+        text = response['choices'][0]['text'].strip()
+
 
         translated_msg = String()
-        translated_msg.data = f"Action: {action}, Object: {obj}, Location: {location}"
+        translated_msg.data = text
         self.publisher_.publish(translated_msg)
+
+        cost = response['usage']['total_tokens']
+        self.get_logger().info(f"Cost would be {cost}")
 
 def main():
     rclpy.init()
@@ -43,4 +39,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
