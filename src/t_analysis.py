@@ -23,7 +23,7 @@ class TranslateNode(Node):
 
         text = response['choices'][0]['text'].strip()
 
-
+        self.get_logger().info(f"Received OpenAI Response: {text}")
         translated_msg = String()
         translated_msg.data = text
         self.publisher_.publish(translated_msg)
