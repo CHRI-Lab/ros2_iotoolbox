@@ -36,3 +36,12 @@ ___
 ### open another terminal to wait for result
 
 ros2 topic echo /translated_sentence
+
+file 'nodes_launch.py' was not found in the share directory of package 'my_pac' which is at '/home/nsc/ros2_workspace/install/my_pac/share/my_pac'
+
+## Auto Script
+
+cd ros2_workspace  
+colcon build  
+source install/setup.bash  
+ros2 launch my_pac nodes_launch.py  
