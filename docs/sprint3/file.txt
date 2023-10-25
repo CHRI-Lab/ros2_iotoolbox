@@ -1,41 +1,41 @@
-E:\python\AI-RedBack\.gitignore
-E:\python\AI-RedBack\files.txt
-E:\python\AI-RedBack\README.md
-E:\python\AI-RedBack\docs\dev\3D Printed Camera Mounting Part.pdf
-E:\python\AI-RedBack\docs\dev\Audio from Microphone.pdf
-E:\python\AI-RedBack\docs\dev\Automation Script.pdf
-E:\python\AI-RedBack\docs\dev\Depth Camera Mounting Analysis.pdf
-E:\python\AI-RedBack\docs\dev\Extract & Publish 2D Coordinates of Objects.pdf
-E:\python\AI-RedBack\docs\dev\FurtherProcessingofConvertedText.pdf
-E:\python\AI-RedBack\docs\dev\Openpose.pdf
-E:\python\AI-RedBack\docs\dev\SpeechToTextAPIcomparisonandchoice.pdf
-E:\python\AI-RedBack\docs\dev\YOLO Pre-trained Model Comparison (v8).pdf
-E:\python\AI-RedBack\docs\sprint1\Do-Be-Feel List.pdf
-E:\python\AI-RedBack\docs\sprint1\Motivational Model.pdf
-E:\python\AI-RedBack\docs\sprint1\Overview, Background, Goals.pdf
-E:\python\AI-RedBack\docs\sprint1\Personas.pdf
-E:\python\AI-RedBack\docs\sprint1\Plans for Sprint 2,3.pdf
-E:\python\AI-RedBack\docs\sprint1\Sprint 1 Planning.pdf
-E:\python\AI-RedBack\docs\sprint1\Sprint 1 Trello.pdf
-E:\python\AI-RedBack\docs\sprint1\User Stories.pdf
-E:\python\AI-RedBack\docs\sprint2\Code Review Process.pdf
-E:\python\AI-RedBack\docs\sprint2\Code Review Template.pdf
-E:\python\AI-RedBack\docs\sprint2\Coding Standards and Guidelines.pdf
-E:\python\AI-RedBack\docs\sprint2\Cyber Security Consideration.pdf
-E:\python\AI-RedBack\docs\sprint2\Ethical Consideration.pdf
-E:\python\AI-RedBack\docs\sprint2\Franka_ros2 Installation Guide.pdf
-E:\python\AI-RedBack\docs\sprint2\Libfranka Installation Guide.pdf
-E:\python\AI-RedBack\docs\sprint2\MediaPipe Objection.pdf
-E:\python\AI-RedBack\docs\sprint2\Plans for Sprint 3.pdf
-E:\python\AI-RedBack\docs\sprint2\ROS2 Installation Guide.pdf
-E:\python\AI-RedBack\docs\sprint2\ROS4HRI(Deprecated).pdf
-E:\python\AI-RedBack\docs\sprint2\Sprint 2 Checklist.pdf
-E:\python\AI-RedBack\docs\sprint2\Sprint 2 Planning.pdf
-E:\python\AI-RedBack\docs\sprint2\Sprint 2 Trello.pdf
-E:\python\AI-RedBack\docs\sprint3\temple
-E:\python\AI-RedBack\src\app.py
-E:\python\AI-RedBack\src\nodes_launch.py
-E:\python\AI-RedBack\src\README.md
-E:\python\AI-RedBack\src\s_to_t.py
-E:\python\AI-RedBack\src\test1.wav
-E:\python\AI-RedBack\src\t_analysis.py
+AI-RedBack\.gitignore
+AI-RedBack\files.txt
+AI-RedBack\README.md
+AI-RedBack\docs\dev\3D Printed Camera Mounting Part.pdf
+AI-RedBack\docs\dev\Audio from Microphone.pdf
+AI-RedBack\docs\dev\Automation Script.pdf
+AI-RedBack\docs\dev\Depth Camera Mounting Analysis.pdf
+AI-RedBack\docs\dev\Extract & Publish 2D Coordinates of Objects.pdf
+AI-RedBack\docs\dev\FurtherProcessingofConvertedText.pdf
+AI-RedBack\docs\dev\Openpose.pdf
+AI-RedBack\docs\dev\SpeechToTextAPIcomparisonandchoice.pdf
+AI-RedBack\docs\dev\YOLO Pre-trained Model Comparison (v8).pdf
+AI-RedBack\docs\sprint1\Do-Be-Feel List.pdf
+AI-RedBack\docs\sprint1\Motivational Model.pdf
+AI-RedBack\docs\sprint1\Overview, Background, Goals.pdf
+AI-RedBack\docs\sprint1\Personas.pdf
+AI-RedBack\docs\sprint1\Plans for Sprint 2,3.pdf
+AI-RedBack\docs\sprint1\Sprint 1 Planning.pdf
+AI-RedBack\docs\sprint1\Sprint 1 Trello.pdf
+AI-RedBack\docs\sprint1\User Stories.pdf
+AI-RedBack\docs\sprint2\Code Review Process.pdf
+AI-RedBack\docs\sprint2\Code Review Template.pdf
+AI-RedBack\docs\sprint2\Coding Standards and Guidelines.pdf
+AI-RedBack\docs\sprint2\Cyber Security Consideration.pdf
+AI-RedBack\docs\sprint2\Ethical Consideration.pdf
+AI-RedBack\docs\sprint2\Franka_ros2 Installation Guide.pdf
+AI-RedBack\docs\sprint2\Libfranka Installation Guide.pdf
+AI-RedBack\docs\sprint2\MediaPipe Objection.pdf
+AI-RedBack\docs\sprint2\Plans for Sprint 3.pdf
+AI-RedBack\docs\sprint2\ROS2 Installation Guide.pdf
+AI-RedBack\docs\sprint2\ROS4HRI(Deprecated).pdf
+AI-RedBack\docs\sprint2\Sprint 2 Checklist.pdf
+AI-RedBack\docs\sprint2\Sprint 2 Planning.pdf
+AI-RedBack\docs\sprint2\Sprint 2 Trello.pdf
+AI-RedBack\docs\sprint3\temple
+AI-RedBack\src\app.py
+AI-RedBack\src\nodes_launch.py
+AI-RedBack\src\README.md
+AI-RedBack\src\s_to_t.py
+AI-RedBack\src\test1.wav
+AI-RedBack\src\t_analysis.py
