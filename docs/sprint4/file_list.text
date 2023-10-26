@@ -1,1 +1,121 @@
 
+    \root
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        2023/10/26     23:25                docs
+d-----        2023/10/26     23:24                src
+-a----        2023/10/26     23:24             14 .gitignore
+-a----        2023/10/26     23:24           4243 README.md
+
+
+    \root\docs
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        2023/10/26     23:24                dev
+d-----        2023/10/26     23:24                sprint1
+d-----        2023/10/26     23:24                sprint2
+d-----        2023/10/26     23:24                sprint3
+d-----        2023/10/26     23:25                sprint4
+d-----        2023/10/26     23:24                VR_images
+
+
+    \root\docs\dev
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        2023/10/26     23:24        3666525 3D Printed Camera Mounting Part.pdf
+-a----        2023/10/26     23:24           7623 Audio from Microphone.pdf
+-a----        2023/10/26     23:24          89087 Automation Script.pdf
+-a----        2023/10/26     23:24        2586040 Depth Camera Mounting Analysis.pdf
+-a----        2023/10/26     23:24        3076281 Depth Distance Detection.pdf
+-a----        2023/10/26     23:24        1431835 Extract & Publish 2D Coordinates of Objects.pdf
+-a----        2023/10/26     23:24          21847 FurtherProcessingofConvertedText.pdf
+-a----        2023/10/26     23:24         629694 Openpose.pdf
+-a----        2023/10/26     23:24         771945 RealSense Camera Package Compatibility.pdf
+-a----        2023/10/26     23:24          88342 SpeechToTextAPIcomparisonandchoice.pdf
+-a----        2023/10/26     23:24        1409235 YOLO Pre-trained Model Comparison (v8).pdf
+
+
+    \root\docs\sprint1
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        2023/10/26     23:24           7028 Do-Be-Feel List.pdf
+-a----        2023/10/26     23:24          95315 Motivational Model.pdf
+-a----        2023/10/26     23:24         887663 Overview, Background, Goals.pdf
+-a----        2023/10/26     23:24        1252201 Personas.pdf
+-a----        2023/10/26     23:24           7866 Plans for Sprint 2,3.pdf
+-a----        2023/10/26     23:24          40016 Sprint 1 Planning.pdf
+-a----        2023/10/26     23:24        1281738 Sprint 1 Trello.pdf
+-a----        2023/10/26     23:24          36314 User Stories.pdf
+
+
+    \root\docs\sprint2
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        2023/10/26     23:24         714607 Code Review Process.pdf
+-a----        2023/10/26     23:24        1144076 Code Review Template.pdf
+-a----        2023/10/26     23:24        1668542 Coding Standards and Guidelines.pdf
+-a----        2023/10/26     23:24           2211 Cyber Security Consideration.pdf
+-a----        2023/10/26     23:24           2719 Ethical Consideration.pdf
+-a----        2023/10/26     23:24           9054 Franka_ros2 Installation Guide.pdf
+-a----        2023/10/26     23:24           5536 Libfranka Installation Guide.pdf
+-a----        2023/10/26     23:24        3565099 MediaPipe Objection.pdf
+-a----        2023/10/26     23:24          29088 Plans for Sprint 3.pdf
+-a----        2023/10/26     23:24           8279 ROS2 Installation Guide.pdf
+-a----        2023/10/26     23:24           1996 ROS4HRI(Deprecated).pdf
+-a----        2023/10/26     23:24          74954 Sprint 2 Checklist.pdf
+-a----        2023/10/26     23:24         154227 Sprint 2 Planning.pdf
+-a----        2023/10/26     23:24        2910726 Sprint 2 Trello.pdf
+
+
+    \root\docs\sprint3
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        2023/10/26     23:24           1848 file.txt
+-a----        2023/10/26     23:24          44954 Plans for Sprint 4.pdf
+-a----        2023/10/26     23:24          60443 Sprint 3 Planning.pdf
+-a----        2023/10/26     23:24         221746 Sprint 3 Retrospective.pdf
+-a----        2023/10/26     23:24           5320 Sprint 3 Review.pdf
+-a----        2023/10/26     23:24          74355 Sprint3 Checklist.pdf
+
+
+    \root\docs\sprint4
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        2023/10/26     23:25              2 file_list.text
+
+
+    \root\docs\VR_images
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        2023/10/26     23:24          39094 output.png
+-a----        2023/10/26     23:24          22749 package tree.png
+-a----        2023/10/26     23:24           7753 voice app UI.png
+
+
+    \root\src
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        2023/10/26     23:24           2726 app.py
+-a----        2023/10/26     23:24            511 nodes_launch.py
+-a----        2023/10/26     23:24           1190 README.md
+-a----        2023/10/26     23:24           3149 s_to_t.py
+-a----        2023/10/26     23:24         821804 test1.wav
+-a----        2023/10/26     23:24           1546 t_analysis.py
