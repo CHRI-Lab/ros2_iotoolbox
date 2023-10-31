@@ -31,7 +31,7 @@ All demos reflecting our project progress have been uploaded to a [YouTube Playl
 - [Speech to Text](https://youtu.be/3NdqpdoMN8E)
 
 ## Repo
-The project is mainly divided into two repos: [AI RedBack](https://github.com/COMP90082-2023-SM2/AI-RedBack) and [AI RedBack Vision](https://github.com/COMP90082-2023-SM2/AI-RedBack-Vision). (Customer requirement) AI RedBack has all the sprint documents and Voice Recognition content, while AI RedBack Vision mainly focuses on Vision.
+The project is mainly divided into two repos: [AI RedBack](https://github.com/COMP90082-2023-SM2/AI-RedBack) and [AI RedBack Vision](https://github.com/COMP90082-2023-SM2/AI-RedBack-Vision)(Client requested). AI RedBack has all the sprint documents and Voice Recognition content, while AI RedBack Vision mainly focuses on Vision.
 
 ## Environment Set Up
 ### ROS2(Humble) Installation Guide
