@@ -12,7 +12,9 @@ The code snippet for 'console_scripts' in the code is to be modified as follows:
 	
         ],
 ```
-___
+___  
+### update setup.py  
+Use your own openai api key to replace our default key in s_to_t.py and t_analysis.py.
 ### open three terminal and input the follow command
 
 cd ros2_workspace
