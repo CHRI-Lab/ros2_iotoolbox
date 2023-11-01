@@ -9,7 +9,7 @@ class TranslateNode(Node):
         self.publisher_ = self.create_publisher(String, 'translated_sentence', 10)
         self.subscription = self.create_subscription(String, 'input_sentence', self.callback, 10)
 
-        openai.api_key = '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'
+        openai.api_key = 'your_api_key' # use your own openai api to replace this
 
     def callback(self, msg):
         sentence = msg.data
