@@ -21,7 +21,7 @@ class VoiceToTextGrammarNode(Node):
         self.subscription  # prevent unused variable warning
 
         # OpenAI API key
-        self.api_key = "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"  # Replace with your API key
+        self.api_key = 'your_api_key' # use your own openai api to replace this
 
     def listener_callback(self, msg):
         """Callback function for when an audio file path is received."""
