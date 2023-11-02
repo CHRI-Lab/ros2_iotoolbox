@@ -26,5 +26,5 @@ COPY . .
 EXPOSE 8000
 
 # The command to run when container is started
-CMD ["python", "./src//app.py"]
+CMD ["python", "./src/app.py"]
 
